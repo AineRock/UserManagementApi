@@ -1,6 +1,7 @@
 ﻿using DataAccess.DbContexts;
 using DataAccess.IRepositories;
 using DataAccess.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories
 {
@@ -20,9 +21,10 @@ namespace DataAccess.Repositories
             return newUser;
         }
 
-        public async Task<User> GetUserIdByEmail(string email)
+        public User GetUserIdByEmail(string email)
         {
             return _context.Users.FirstOrDefault(u => u.Email == email);
+
         }
     }
 }

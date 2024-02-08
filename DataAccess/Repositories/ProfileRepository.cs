@@ -1,19 +1,14 @@
 ﻿using DataAccess.DbContexts;
 using DataAccess.IRepositories;
 using DataAccess.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
     public class ProfileRepository : IProfileRepository
     {
-        private ProfileDbContext _context;
+        private UserDbContext _context;
 
-        public ProfileRepository(ProfileDbContext context)
+        public ProfileRepository(UserDbContext context)
         {
             _context = context;
         }
