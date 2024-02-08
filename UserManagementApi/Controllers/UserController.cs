@@ -26,7 +26,7 @@ namespace UserManagementApi.Controllers
             {
                 throw ex;
             }
-            return Ok(user);
+            return Ok("Please create profile");
         }
     }
 }

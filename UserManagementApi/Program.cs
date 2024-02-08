@@ -10,10 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<UserDbContext>(option =>
-    option.UseSqlServer(builder.Configuration.GetConnectionString("UserManagementConnectionString")));
+builder.Services.AddDbContext<UserDbContext>();
 
-    builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
     builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

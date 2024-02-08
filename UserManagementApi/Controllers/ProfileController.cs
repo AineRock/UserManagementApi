@@ -5,7 +5,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace UserManagementApi.Controllers
 {
-    public class ProfileController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class ProfileController : ControllerBase
     {
         private IUserRepository _userRepository;
         private IProfileRepository _profileRepository;
@@ -17,20 +19,21 @@ namespace UserManagementApi.Controllers
         }
 
         [HttpPost(Name = "AddProfile")]
-        public async Task<IActionResult> CreateProfile([FromBody] Profile profile)
+        public async Task<IActionResult> CreateProfile([FromBody] 
+        string profileName, string profileDescription, string email)
         {
             try
             {
-                var userId = _userRepository.GetUserIdByEmail(profile.Email);
+                var userId = _userRepository.GetUserIdByEmail(email);
 
                 if (userId != null)
                 {
-                    await _profileRepository.AddProfileAsync(
+                    var profile = await _profileRepository.AddProfileAsync(
                         new Profile()
                         {
                             UserId = userId.Id,
-                            ProfileName = profile.ProfileName,
-                            ProfileDescription = profile.ProfileDescription
+                            ProfileName = profileName,
+                            ProfileDescription = profileDescription
                         });
                 }
             }
@@ -38,7 +41,7 @@ namespace UserManagementApi.Controllers
             {
                 throw ex;
             }
-            return Ok(profile);
+            return Ok();
         }
     }
 }
