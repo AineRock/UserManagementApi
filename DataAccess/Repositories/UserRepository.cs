@@ -23,8 +23,7 @@ namespace DataAccess.Repositories
 
         public User GetUserIdByEmail(string email)
         {
-            return _context.Users
-                .FirstOrDefault(u => u.Email == email);
+            return _context.Users.FirstOrDefault(u => u.Email == email);
         }
     }
 }

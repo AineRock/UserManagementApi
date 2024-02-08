@@ -1,6 +1,8 @@
-﻿using DataAccess.Models;
+﻿using DataAccess.Configuration;
+using DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace DataAccess.DbContexts
 {
@@ -21,7 +23,9 @@ namespace DataAccess.DbContexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new ProfileConfiguration());
+
         }
     }
 }
