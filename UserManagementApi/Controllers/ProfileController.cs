@@ -18,20 +18,23 @@ namespace UserManagementApi.Controllers
         }
 
         [HttpPost("AddProfile")]
-        public async Task<IActionResult> CreateProfile(string profileName, string profileDescription,
-            string email)
+        public async Task<IActionResult> CreateProfile(Profile profile, string email)
         {
             try
             {
                 var userId = _userRepository.GetUserIdByEmail(email);
 
-                    var newProfile =  await _profileRepository.AddProfileAsync(
-                        new Profile()
-                        {
-                            UserId = (Int16)userId.Id,
-                            ProfileName = profileName,
-                            ProfileDescription = profileDescription
-                        });
+                if (userId != null)
+                {
+                    Profile newProfile = new Profile()
+                    {
+                        UserId = userId.Id,
+                        ProfileName = profile.ProfileName,
+                        ProfileDescription = profile.ProfileDescription
+                    };
+
+                    await _profileRepository.AddProfileAsync(newProfile);
+                }
             }
             catch (Exception ex)
             {
