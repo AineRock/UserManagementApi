@@ -46,5 +46,16 @@ namespace UserManagementApi.Tests
             _profileRepositoryMock.Verify(repo => repo.AddProfileAsync(It.IsAny<Profile>()), Times.Once);
 
         }
+
+        [Fact]
+        public void GetAllProfiles_Ok()
+        {
+
+            var controller = new ProfileController(_userRepositoryMock.Object, _profileRepositoryMock.Object);
+
+            var result = controller.GetAllUsers();
+
+            _profileRepositoryMock.Verify(repo => repo.GetAllProfiles(), Times.Once);
+        }
     }
 }

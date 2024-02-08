@@ -6,5 +6,6 @@ namespace DataAccess.IRepositories
     {
         Task<User> AddUserAsync(User newUser);
         User GetUserIdByEmail(string email);
+        List<User> GetAllUsers();
     }
 }

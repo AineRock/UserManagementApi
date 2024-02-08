@@ -21,6 +21,11 @@ namespace DataAccess.Repositories
             return newUser;
         }
 
+        public List<User> GetAllUsers()
+        {
+            return _context.Users.ToList();
+        }
+
         public User GetUserIdByEmail(string email)
         {
             return _context.Users.FirstOrDefault(u => u.Email == email);

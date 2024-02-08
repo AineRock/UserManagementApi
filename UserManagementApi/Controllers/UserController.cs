@@ -1,5 +1,6 @@
 using DataAccess.IRepositories;
 using DataAccess.Models;
+using DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UserManagementApi.Controllers
@@ -16,7 +17,7 @@ namespace UserManagementApi.Controllers
             _repository = repository;
         }
 
-        [HttpPost("AddUser")]
+        [HttpPost("CreateUser")]
         public async Task<IActionResult> CreateUser(User user)
         {
             try
@@ -28,6 +29,20 @@ namespace UserManagementApi.Controllers
                 throw ex;
             }
             return Ok("Please create a profile");
+        }
+
+        [HttpGet("GetAllUsers")]
+        public List<User> GetAllUsers()
+        {
+            try
+            {
+                return _repository.GetAllUsers();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
     }
 }

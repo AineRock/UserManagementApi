@@ -20,5 +20,10 @@ namespace DataAccess.Repositories
 
             return newProfile;
         }
+
+        public List<Profile> GetAllProfiles()
+        {
+            return _context.Profile.ToList();
+        }
     }
 }

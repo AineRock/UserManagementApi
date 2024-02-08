@@ -18,7 +18,7 @@ namespace UserManagementApi.Controllers
             _profileRepository = profileRepository;
         }
 
-        [HttpPost("AddProfile")]
+        [HttpPost("CreateProfile")]
         public async Task<IActionResult> CreateProfile(Profile profile, string email)
         {
             try
@@ -36,12 +36,29 @@ namespace UserManagementApi.Controllers
 
                     await _profileRepository.AddProfileAsync(newProfile);
                 }
+                else
+                {
+                    throw new Exception("User not found");
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
             return Ok();
+        }
+        [HttpGet("GetAllProfiles")]
+        public List<Profile> GetAllUsers()
+        {
+            try
+            {
+                return _profileRepository.GetAllProfiles();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

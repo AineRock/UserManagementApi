@@ -31,5 +31,15 @@ namespace UserManagementApi.Tests
             Assert.NotNull(result);
             _repositoryMock.Verify(repo => repo.AddUserAsync(It.IsAny<User>()), Times.Once);
         }
+        [Fact]
+        public void GetAllUsers_Ok()
+        {
+
+            var controller = new UserController(_repositoryMock.Object);
+
+            var result = controller.GetAllUsers();
+
+            _repositoryMock.Verify(repo => repo.GetAllUsers(), Times.Once);
+        }
     }
 }
