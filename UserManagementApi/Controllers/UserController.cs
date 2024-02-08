@@ -6,6 +6,7 @@ namespace UserManagementApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [SwaggerControllerOrder(0)]
     public class UserController : ControllerBase
     {
         private IUserRepository _repository;
