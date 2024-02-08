@@ -1,5 +1,8 @@
 using DataAccess.DbContexts;
+using DataAccess.IRepositories;
+using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<UserDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("UserManagementConnectionString")));
+
+    builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

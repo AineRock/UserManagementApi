@@ -1,6 +1,5 @@
-using DataAccess.Repositories;
-using Domain.Entities;
-using Domain.IRepositories;
+using DataAccess.IRepositories;
+using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UserManagementApi.Controllers
@@ -21,7 +20,7 @@ namespace UserManagementApi.Controllers
         {
             try
             {
-                await _repository.AddAsync(user);
+                await _repository.AddUserAsync(user);
             }
             catch (Exception ex)
             {

@@ -1,6 +1,6 @@
-﻿using Domain.Entities;
+﻿using DataAccess.Models;
 
-namespace Domain.IRepositories
+namespace DataAccess.IRepositories
 {
     public interface IUserRepository
     {

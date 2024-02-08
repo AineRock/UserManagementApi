@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Models
 {
-    public class User
+    public class User : BaseEntity
     {
-        [Key]
-        public int Id { get;}
         [Required]
         public string FirstName { get; set; }
         [Required]
