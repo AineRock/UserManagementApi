@@ -19,5 +19,10 @@ namespace DataAccess.Repositories
             await _context.SaveChangesAsync();
             return newUser;
         }
+
+        public async Task<User> GetUserIdByEmail(string email)
+        {
+            return _context.Users.FirstOrDefault(u => u.Email == email);
+        }
     }
 }

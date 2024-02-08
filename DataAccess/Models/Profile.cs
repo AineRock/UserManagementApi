@@ -9,5 +9,7 @@ namespace DataAccess.Models
         public string ProfileName { get; set; }
         [Required]
         public string ProfileDescription { get; set; }
+
+        public string Email { get; set; }
     }
 }
