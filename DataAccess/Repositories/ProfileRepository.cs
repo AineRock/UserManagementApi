@@ -15,8 +15,9 @@ namespace DataAccess.Repositories
 
         public async Task<Profile> AddProfileAsync(Profile newProfile)
         {
-            await _context.Profiles.AddAsync(newProfile);
-            await _context.SaveChangesAsync();
+             await _context.Profile.AddAsync(newProfile);
+             await _context.SaveChangesAsync();
+
             return newProfile;
         }
     }

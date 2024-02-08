@@ -9,6 +9,7 @@ namespace DataAccess.Models
 {
     public class User : BaseEntity
     {
+        [Key]
         [Required]
         public string FirstName { get; set; }
         [Required]

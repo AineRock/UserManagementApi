@@ -1,7 +1,6 @@
 ﻿using DataAccess.IRepositories;
 using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace UserManagementApi.Controllers
 {
@@ -18,24 +17,21 @@ namespace UserManagementApi.Controllers
             _profileRepository = profileRepository;
         }
 
-        [HttpPost(Name = "AddProfile")]
-        public async Task<IActionResult> CreateProfile([FromBody] 
-        string profileName, string profileDescription, string email)
+        [HttpPost("AddProfile")]
+        public async Task<IActionResult> CreateProfile(string profileName, string profileDescription,
+            string email)
         {
             try
             {
                 var userId = _userRepository.GetUserIdByEmail(email);
 
-                if (userId != null)
-                {
-                    var profile = await _profileRepository.AddProfileAsync(
+                    var newProfile =  await _profileRepository.AddProfileAsync(
                         new Profile()
                         {
-                            UserId = userId.Id,
+                            UserId = (Int16)userId.Id,
                             ProfileName = profileName,
                             ProfileDescription = profileDescription
                         });
-                }
             }
             catch (Exception ex)
             {

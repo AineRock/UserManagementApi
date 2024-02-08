@@ -15,8 +15,8 @@ namespace UserManagementApi.Controllers
             _repository = repository;
         }
 
-        [HttpPost(Name = "AddUser")]
-        public async Task<IActionResult> CreateUser([FromBody] User user)
+        [HttpPost("AddUser")]
+        public async Task<IActionResult> CreateUser(User user)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace UserManagementApi.Controllers
             {
                 throw ex;
             }
-            return Ok("Please create profile");
+            return Ok("Please create a profile");
         }
     }
 }
