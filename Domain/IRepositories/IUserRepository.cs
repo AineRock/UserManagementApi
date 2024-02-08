@@ -2,8 +2,8 @@
 
 namespace Domain.IRepositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepository<User>
     {
-        Task<User> AddUser(User user);
+
     }
 }
